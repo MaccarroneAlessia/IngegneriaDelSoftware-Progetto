@@ -9,9 +9,9 @@ import java.util.stream.IntStream;
 //il mio file rappresenta il contesto
 public class MyFile{
     private StateFile st = new NotFind();         //oggetto state
-    final String path;                            //nome file
-    final String[] words;                         //array di parole da cercare
-    final int n;                                  //numero di parole
+    private final String path;                    //nome file
+    private String[] words;                       //array di parole da cercare
+    private int n;                                //numero di parole
 
     public MyFile(String pathname, String[] arrWord, int m){
         path = pathname;
