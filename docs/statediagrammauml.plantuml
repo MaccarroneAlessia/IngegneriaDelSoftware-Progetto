@@ -38,7 +38,7 @@ class Folder{
 class MyFile{
     - st: StateFile
     - path: final String
-    - words: final String[]
+    - words: String[]
     - n: int
 
     + MyFile(pathname: String, arrWord: String[], m: int)
