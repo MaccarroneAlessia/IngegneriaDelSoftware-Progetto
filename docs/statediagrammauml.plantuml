@@ -1,0 +1,87 @@
+' PlantUML: tool per la generazione di UML (.png) in modo testuale
+'
+
+@startuml State
+
+' START STYLE
+skinparam {
+	'monochrome true
+	'shadowing false
+	'classBackgroundColor white
+	'noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype polyline
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+title Design Pattern State
+
+class Client{
+    - {static} File isDir(nameDir: File) : File
+    + main(args: String[]): void
+    
+}
+
+class Folder{   
+    - {static} m: int
+    - {static} winFolder: File
+    - find[]: boolean
+
+    + Folder(path : File, toSearch: final String[]): void
+    - {static} getArrayFile(name: String, toSearch: final String) : boolean 
+    + search(): void
+
+}
+
+class MyFile{
+    - st: StateFile
+    - path: final String
+    - words: final String[]
+    - n: int
+
+    + MyFile(pathname: String, arrWord: String[], m: int)
+    + show(): void
+    - search(word: String): void
+    + searcher(): void
+
+}
+
+class StateFile <<interface>>{
+   + read(): void
+   + write(word: String, path: String): StateFile
+   + show(): void
+}
+
+class NotFind{
+    + read(): void
+    + write(word: String, path: String): StateFile
+    + show(): void
+
+}
+
+class Find{
+    - pathname: String
+    - wordsFind: ArrayList<String>
+
+    - newFile(txt: String): String
+    - highlinght(): boolean
+    - modify(txt: String): boolean
+    - {static} copyFile(src: String, dest: String): void
+
+    + read(): void
+    + write(word: String, path: String): StateFile
+    + show(): void
+
+}
+
+' definisco le relazioni
+Client -up-> Folder
+Folder -up-> MyFile
+MyFile -down-> StateFile
+StateFile <|.down. NotFind
+StateFile <|.down. Find
+
+
+@enduml
