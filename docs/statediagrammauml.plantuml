@@ -62,7 +62,7 @@ class NotFind{
 }
 
 class Find{
-    - pathname: String
+    - pathmod: String
     - wordsFind: ArrayList<String>
 
     - newFile(txt: String): String
