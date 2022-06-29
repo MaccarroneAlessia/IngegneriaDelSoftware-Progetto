@@ -17,27 +17,30 @@ import java.util.stream.IntStream;
 */
 
 public class Client {
-	public static File isDir(File nameDir){
-		if (nameDir.isDirectory()){
+	public static File isDir(File nameDir) {
+		if (nameDir.isDirectory()) {
 			System.out.println("il path inserito è una cartella");
 			return nameDir;
-		}
-		else{
-            System.out.println("ERRORE: il path inserito non è una cartella");
-            System.out.println("inserire il path di una cartella con il seguente formato");
-            System.out.println("/percorso/delle/cartelle");
-
-			InputStreamReader reader = new InputStreamReader (System.in);
-			BufferedReader myInput = new BufferedReader (reader);
+		} else {
+			System.out.println("ERRORE: il path inserito non è una cartella");
+			System.out.println("inserire il path di una cartella con il seguente formato");
+			System.out.println("/percorso/delle/cartelle");
+			/*
+			 * System.out.print("Nome file (senza suffisso): ");
+			 * String nome = Input.readLine();
+			 */
+			InputStreamReader reader = new InputStreamReader(System.in);
+			BufferedReader myInput = new BufferedReader(reader);
 			String str1 = new String();
 
-			try {str1 = myInput.readLine();
+			try {
+				str1 = myInput.readLine();
 			} catch (IOException e) {
-				System.out.println ("Si è verificato un errore: " + e);
-				System.exit(-1); 
+				System.out.println("Si è verificato un errore: " + e);
+				System.exit(-1);
 			}
-			
-			System.out.println ("Hai scritto: " +str1);
+
+			System.out.println("Hai scritto: " + str1);
 			File name = new File(str1);
 			return isDir(name);
 		}
@@ -47,14 +50,14 @@ public class Client {
 
 		String nameDir = new String(args[0]);
 
-		int n = (args.length)-1;
-		String[] words = new String[n];					            //array delle parole da cercare
-		IntStream.rangeClosed(1,n-1).forEach(i -> words[i-1] = args[i]);
+		int n = (args.length) - 1;
+		String[] words = new String[n]; // array delle parole da cercare
+		IntStream.rangeClosed(1, n - 1).forEach(i -> words[i - 1] = args[i]);
 
-		Folder dir = new Folder(isDir(new File(nameDir)), words);		        //oggetto di tipo facade
-        //l'oggetto facade salva i file all'interno alla cartella e l'array di parole
+		Folder dir = new Folder(isDir(new File(nameDir)), words); // oggetto di tipo facade
+		// l'oggetto facade salva i file all'interno alla cartella e l'array di parole
 
-        dir.search();
+		dir.search();
 
 	}
 }
