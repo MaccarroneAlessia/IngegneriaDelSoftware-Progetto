@@ -1,9 +1,8 @@
 package org.progetto.State;
 
-
 import java.io.IOException;
 
-public class NotFind implements StateFile{
+public class NotFind implements StateFile {
 
     @Override
     public void read() {
@@ -11,7 +10,9 @@ public class NotFind implements StateFile{
     }
 
     @Override
-    public StateFile write(String word, String path) throws IOException {              //il file essendo inizializzato con lo stato NotFind entrerà in questo metodo e cambierà stato
+    public StateFile write(String word, String path) throws IOException { // il file essendo inizializzato con lo stato
+                                                                          // NotFind entrerà in questo metodo e cambierà
+                                                                          // stato
         System.out.println("PAROLA TROVATA: Cambio di stato");
         StateFile Find = new Find();
         return Find.write(word, path);
